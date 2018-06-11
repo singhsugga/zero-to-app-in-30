@@ -1,12 +1,1 @@
-<agm-map [latitude]="geoPoint.latitude" [longitude]="geoPoint.longitude" [zoom]="zoom"></agm-map>
-<div class="sidebar">
-  <div class="floating-box">
-    <h1>0 to APP in 30</h1>
-    <p>
-      <span *ngIf="afAuth.user | async as user; else showLogin">{{ user.displayName }} • <a href (click)="logout()">Log out</a> • </span>
-      <ng-template #showLogin><a href routerLink="/login">Login</a> • </ng-template>
-      <a href routerLink="/set-location">Set my location</a>
-    </p>
-  </div>
-  <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>

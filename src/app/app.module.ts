@@ -9,13 +9,16 @@ import { environment } from '../environments/environment';
 import { AgmCoreModule } from '@agm/core';
 import { LoginComponent } from './login/login.component';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { SetLocationComponent } from './set-location/set-location.component';
+import { MapComponent } from './map/map.component';
+import { HometownComponent } from './hometown/hometown.component';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SetLocationComponent
+    MapComponent,
+    HometownComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,8 @@ import { SetLocationComponent } from './set-location/set-location.component';
     })
   ],
   providers: [
-    AngularFireAuth
+    AngularFireAuth,
+    AngularFirestore
   ],
   bootstrap: [AppComponent]
 })

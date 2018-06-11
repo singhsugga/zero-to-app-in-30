@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { SetLocationComponent } from './set-location/set-location.component';
 import { AuthGuard } from './auth.guard';
+import { MapComponent } from './map/map.component';
+import { HometownComponent } from './hometown/hometown.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AppComponent,
+    component: MapComponent,
     children: [
       {
         path: 'login',
         component: LoginComponent
       },
       {
-        path: 'set-location',
-        component: SetLocationComponent,
+        path: 'hometown',
+        component: HometownComponent,
         canActivate: [AuthGuard]
       }
     ]

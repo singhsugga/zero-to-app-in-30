@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   signInWithGoogle() {
     this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
       .then(() => {
-        this.zone.run(() => this.router.navigateByUrl('/set-location'));
+        this.zone.run(() => this.router.navigateByUrl('/hometown'));
       }, err => console.error('Error signing in', err));
   }
 
