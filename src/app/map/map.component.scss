@@ -2,6 +2,15 @@ agm-map {
   width: 100vw;
   height: 100vh;
 }
+.agm-info-window-content {
+  text-align: center;
+  img {
+    display: block;
+    margin: auto;
+    width: 60px;
+    border-radius: 50%;
+  }
+}
 
 .sidebar {
   position: absolute;

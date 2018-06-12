@@ -30,7 +30,8 @@ export class MapComponent {
       const marker: MapMarker = {
         lat: event.coords.lat,
         lng: event.coords.lng,
-        label: this.userService.currentUser.displayName
+        label: this.userService.currentUser.displayName,
+        photoUrl: this.userService.currentUser.photoURL
       };
       this.afs.doc(`hometowns/${this.userService.currentUser.uid}`).set(marker);
     }
@@ -41,4 +42,5 @@ export interface MapMarker {
   lat: number;
   lng: number;
   label: string;
+  photoUrl: string;
 }
