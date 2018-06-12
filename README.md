@@ -1,27 +1,48 @@
-# ZeroToAppIn30
+# Zero to app in 30m with AngularFire
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.1.
+Angular together with Firebase makes a potent combination. [Jamie Perkins](https://github.com/inorganik)' presentation shows how to create a production-ready app using these tools in only a half hour. This project only scratches the surface of Firebase, but demonstrates:
 
-## Development server
+- Setting up authentication
+- Make an auth guard to protect routes
+- Make use of avatars
+- Read and write Firestore data
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+And as a bonus, you'll get to know Angular google maps. Later in your project, you can take advantage of cloud storage, cloud functions, and everything else Firebase has to offer.
 
-## Code scaffolding
+### Getting started
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To run this project locally, you'll need to [create a new Firebase project](https://console.firebase.google.com/) and get a [Google maps API key](https://console.cloud.google.com/apis/library/maps-backend.googleapis.com).
 
-## Build
+Create an environment.ts file from the provided sample file and replace the keys.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Build and run locally:
 
-## Running unit tests
+```shell
+$ ng s
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Init Firebase
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+First, globally install firebase tools:
+```sh
+$ npm i -g firebase-tools
+```
+Login to firebase:
+```sh
+$ firebase login
+```
+Build the app for prod so you can test deployment:
+```sh
+$ ng build --prod
+```
+You can init and re-init any time. The `init` command makes it easy to configure firebase.
+  - For now, only choose hosting when prompted for what to configure locally.
+  - Configure as an SPA? - Yes.
+  - For serve folder, choose `dist/project-name`
+```sh
+$ firebase init 
+```
+Deploy. Your app will be instantly hosted and accessible at the provided url.
+```sh
+$ firebase deploy
+```
