@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { take, map, tap } from 'rxjs/operators';
+import { first, map, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -18,7 +18,7 @@ export class UserService {
 
   isLoggedIn(withRedirect?: boolean): Observable<boolean> {
     return this.afAuth.authState.pipe(
-      take(1),
+      first(),
       map(user => {
         this.currentUser = user;
         return !!user;
