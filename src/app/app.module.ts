@@ -25,8 +25,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase, '0toappin30'),
     AgmCoreModule.forRoot({
-      apiKey: environment.googleApiKey,
-      apiVersion: '3.exp'
+      apiKey: environment.googleApiKey
     })
   ],
   providers: [

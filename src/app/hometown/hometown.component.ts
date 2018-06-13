@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../services/user.service';
-import { AngularFirestore } from 'angularfire2/firestore';
 import { MapMarker } from '../map/map.component';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 
 @Component({

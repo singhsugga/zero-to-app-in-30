@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { MouseEvent } from '@agm/core';
 import { UserService } from '../services/user.service';
+import { MouseEvent } from '@agm/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 
@@ -23,15 +23,17 @@ export class MapComponent {
   }
 
   setHometown(event: MouseEvent) {
-    if (this.userService.isLoggedIn()) {
-      const marker: MapMarker = {
-        lat: event.coords.lat,
-        lng: event.coords.lng,
-        label: this.userService.currentUser.displayName,
-        photoUrl: this.userService.currentUser.photoURL
-      };
-      this.afs.doc(`hometowns/${this.userService.currentUser.uid}`).set(marker);
-    }
+    this.userService.isLoggedIn().subscribe(isLoggedIn => {
+      if (isLoggedIn) {
+        const marker: MapMarker = {
+          lat: event.coords.lat,
+          lng: event.coords.lng,
+          label: this.userService.currentUser.displayName,
+          photoUrl: this.userService.currentUser.photoURL
+        };
+        this.afs.doc(`hometowns/${this.userService.currentUser.uid}`).set(marker);
+      }
+    });
   }
 }
 
