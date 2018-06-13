@@ -24,7 +24,6 @@ export class UserService {
         return !!user;
       }),
       tap(isLoggedIn => {
-        console.log('logged in status', isLoggedIn);
         if (!isLoggedIn && withRedirect) {
           this.router.navigateByUrl('/login');
         }

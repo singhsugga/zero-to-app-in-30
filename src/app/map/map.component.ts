@@ -1,7 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { MouseEvent } from '@agm/core';
-import { UserService } from '../user.service';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { UserService } from '../services/user.service';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 
@@ -18,14 +17,12 @@ export class MapComponent {
 
   constructor(
     public userService: UserService,
-    public afAuth: AngularFireAuth,
     private afs: AngularFirestore
   ) {
     this.markers$ = afs.collection<MapMarker>('hometowns').valueChanges();
   }
 
   setHometown(event: MouseEvent) {
-    console.log('map click', event.coords);
     if (this.userService.isLoggedIn()) {
       const marker: MapMarker = {
         lat: event.coords.lat,

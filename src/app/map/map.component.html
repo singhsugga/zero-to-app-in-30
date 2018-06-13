@@ -8,7 +8,7 @@
     <h1>Hometowns</h1>
     <p><small>AngularFire demo project</small></p>
     <p>
-      <span *ngIf="afAuth.user | async as user; else showLogin">{{ user.displayName }} • <a href (click)="userService.logout()">Log out</a> • </span>
+      <span *ngIf="userService.afAuth.user | async as user; else showLogin">{{ user.displayName }} • <a href (click)="userService.logout()">Log out</a> • </span>
       <ng-template #showLogin><a href routerLink="/login" routerLinkActive="active">Login to add your hometown</a> • </ng-template>
       <a href routerLink="/hometown" routerLinkActive="active">My hometown</a>
     </p>
