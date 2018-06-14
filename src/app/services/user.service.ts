@@ -18,12 +18,14 @@ export class UserService {
 
   isLoggedIn(withRedirect?: boolean): Observable<boolean> {
     return this.afAuth.authState.pipe(
-      first(),
+      first(), // allow any subscriptions to be auto unsubscribed
       map(user => {
+        // assign the current user while we're here.
         this.currentUser = user;
         return !!user;
       }),
       tap(isLoggedIn => {
+        // this tap is so we can redirect if logged out
         if (!isLoggedIn && withRedirect) {
           this.router.navigateByUrl('/login');
         }

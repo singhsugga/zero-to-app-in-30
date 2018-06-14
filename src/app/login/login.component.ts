@@ -22,6 +22,9 @@ export class LoginComponent implements OnInit {
   signInWithGoogle() {
     this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
       .then(() => {
+        // since this promise resolves outside the angular zone,
+        // calling zone.run() gets us back into the zone
+        // so we can route the user somewhere upon login
         this.zone.run(() => this.router.navigateByUrl('/hometown'));
       }, err => console.error('Error signing in', err));
   }
