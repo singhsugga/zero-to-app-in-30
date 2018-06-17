@@ -46,3 +46,48 @@ Deploy. Your app will be instantly hosted and accessible at the provided url.
 ```sh
 $ firebase deploy
 ```
+
+### AngularFire snippets
+
+Here are some code snippets that took me a bit of trial and error. They aren't used in the project so I included them here for reference using a generic model "Entity":
+
+#### Firebase get or else
+
+```ts
+getOrElse(entity: Entity): Promise<Entity | any> {
+  return new Promise((resolve, reject) => {
+    this.afs.doc<Entity>(docPath).valueChanges().pipe(
+      first()
+    ).toPromise()
+      .then(result => {
+        if (result === undefined) {
+          // not found - this is the "else"
+          // do stuff here or just reject
+          reject('document does not exist');
+        } else {
+          resolve(result);
+        }
+      })
+      .catch((err) => reject(err));
+  }
+}
+```
+
+#### Firebase upsert
+
+```ts
+addOrUpdate(entity: Entity): Promise<any> {
+  return new Promise((resolve, reject) => {
+    const docPath = `entities/${entity.id}`;
+    // try to update first
+    this.afs.doc(docPath).update(entity)
+      .then(() => resolve())
+      .catch(() => {
+        // doc doesn't exist, add
+        this.afs.doc(docPath).set(entity)
+          .then(() => resolve())
+          .catch(err => reject(err));
+      });
+    });
+}
+```
