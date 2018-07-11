@@ -1,7 +1,5 @@
-import { Component, OnInit, NgZone } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { auth } from 'firebase/app';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -10,23 +8,9 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(
-    public afAuth: AngularFireAuth,
-    private zone: NgZone,
-    private router: Router
-  ) { }
+  constructor(public userService: UserService) { }
 
   ngOnInit() {
-  }
-
-  signInWithGoogle() {
-    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
-      .then(() => {
-        // since this promise resolves outside the angular zone,
-        // calling zone.run() gets us back into the zone
-        // so we can route the user somewhere upon login
-        this.zone.run(() => this.router.navigateByUrl('/hometown'));
-      }, err => console.error('Error signing in', err));
   }
 
 }
