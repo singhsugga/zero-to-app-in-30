@@ -9,6 +9,10 @@ Angular together with Firebase makes a potent combination. [Jamie Perkins](https
 
 And as a bonus, you'll get to know Angular google maps. Later in your project, you can take advantage of cloud storage, cloud functions, and everything else Firebase has to offer.
 
+### Production example
+
+If you're wondering what a real-world AngularFire app looks like, check out [Podmap](https://github.com/inorganik/podmap), an open-source app I built to map the world's podcasts.
+
 ### Getting started
 
 To run this project locally, you'll need to [create a new Firebase project](https://console.firebase.google.com/) and get a [Google maps API key](https://console.cloud.google.com/apis/library/maps-backend.googleapis.com).
