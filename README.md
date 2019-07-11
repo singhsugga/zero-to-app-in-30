@@ -25,7 +25,7 @@ Build and run locally:
 $ ng s
 ```
 
-### Init Firebase
+### Init Firebase package
 
 First, globally install firebase tools:
 ```sh
